@@ -26,7 +26,7 @@ class movie(db.Model):
     year = db.Column(db.String(4))
 
 
-@app.route("/")
+@app.route("/",endpoint="index")
 def haha():
     
     use = user.query.all()
@@ -59,6 +59,11 @@ def forge():
     click.echo("导入数据完成")
 
 
+
+#自定义404报错页面
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")
 
 
 
