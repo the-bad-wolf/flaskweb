@@ -1,57 +1,17 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>混世魔王</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
-    <style>
-        #avatar{
-    width: 40px;
-    height: 100px;
-}
-body{
-    margin: 0 auto;
-    max-width: 600px;
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-footer{
-    color: azure;
-    margin-top:20px ;
-    text-align: center;
-    padding: 10px;
+{% extends 'base.html'%}
 
-}
-.movie-list{
-    list-style: none;
-    padding: 0;
-    margin-bottom:10px ;
-    box-shadow: 0 20px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
-}
-.movie-list li{
-    padding: 12px 24px;
-    border-bottom: 1px solid #dddddd;
-}
-.movie-list li:hover{
-    background-color: #000;
-}
-    </style>
-</head>
-<body>
-    <h2>
-        <img src="{{url_for('static',filename='images/avatar.jpg')}}" alt="头像" id='avatar'>
-        混世大魔王
-    </h2>
+{% block content%}
     <p>总共{{movies | length}}个电影</p>
     <ul class='movie-list'>
         {%for movie in movies %}
-        <li>{{movie.title}}-{{movie.year}} </li>
+        <li>
+            {{movie.title}}-{{movie.year}} 
+            <span class='flaot-right'>
+                <a href="http://v.baidu.com/v?word={{movie.title}}&ct=301989888&rn=67&pn=0&db=0&s=0&fbl=800&ie=utf-8&oq={{movie.title}}&f=3&rsp=0" target="_blank">百度视频</a>
+            </span>
+        </li>
         {%endfor%}
     </ul>
-    <footer>
-        <small>&copy;2020 &nbsp; <a href="#">1903c</a> </small>
+    {% endblock %}
 
-    </footer>
-</body>
-</html>
+   

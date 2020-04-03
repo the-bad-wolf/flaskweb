@@ -28,10 +28,9 @@ class movie(db.Model):
 
 @app.route("/",endpoint="index")
 def haha():
-    
-    use = user.query.all()
+    # use = user.query.all()
     heiha = movie.query.all()
-    return render_template('index.html',movies=heiha,use=user)
+    return render_template('index.html',movies=heiha)
 
 
 @app.cli.command()
@@ -66,6 +65,13 @@ def page_not_found(e):
     return render_template("404.html")
 
 
+
+
+#模板上下文处理函数
+@app.context_processor
+def common_user():
+    heiha = user.query.all()
+    return dict(use=heiha)
 
 
 
