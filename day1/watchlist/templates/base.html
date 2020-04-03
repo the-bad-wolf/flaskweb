@@ -57,6 +57,38 @@ nav li a{
 nav li a:hover{
     background-color: burlywood;
 }
+.float-right{
+    float: right;
+
+}
+.baidu{
+    font-size: 12px;
+    font-weight: bold;
+    color: coral;
+    text-decoration: none;
+    background:cyan;
+    border-radius: 5px;
+    padding: 3px 5px;
+}
+.btn{
+    font-size: 12px;
+    padding: 3px 5px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: gold;
+    color: black;
+    border: 1px solid #000;
+}
+.alert{
+    position: relative;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid transparent;
+    color:violet;
+    background-color: #fff;
+    border-color:wheat;
+    border-radius:5px;
+}
     </style>
      {% endblock %}
 </head>
@@ -65,6 +97,12 @@ nav li a:hover{
         <img src="{{url_for('static',filename='images/avatar.jpg')}}" alt="头像" id='avatar'>
         {{use.0.name}}
     </h2>
+    {% for message in  get_flashed_messages()%}
+        <div class="alert">{{message}}</div>
+
+
+
+    {%endfor%}
     <nav>
         <ul>
             <li>
