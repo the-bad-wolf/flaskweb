@@ -99,14 +99,11 @@ nav li a:hover{
     </h2>
     {% for message in  get_flashed_messages()%}
         <div class="alert">{{message}}</div>
-
-
-
     {%endfor%}
     <nav>
         <ul>
             <li>
-                <a href="{{url_for("index")}}">首页</a>
+                <a href="{{url_for('index')}}">首页</a>
             </li>
         </ul>
     </nav>

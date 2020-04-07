@@ -42,11 +42,36 @@ def haha():
         flash("创建成功")
         return redirect(url_for("index"))
 
-
-
-
     heiha = movie.query.all()
     return render_template('index.html',movies=heiha)
+
+@app.route("/movie/edit/<int:movie_id>",methods=['get','post'],endpoint="edit")
+def edit(movie_id):
+    heiha = movie.query.get_or_404(movie_id)
+    if request.method.lower() ==  "post":
+        title = request.form.get("title")
+        print(title)
+        year = request.form.gte("year")
+        if not title or not year or len(year)>4:
+            flash("输入错误")
+            print("22222222222222222222222222222222")
+            return redirect(url_for("edit"), movie_id=movie_id)
+        heiha.title = title
+        heiha.year = year
+        db.session.commit()
+        flash("电影更新完成")
+        return redirect(url_for("index"))
+    return render_template("edit.html",movie=heiha)
+
+
+@app.route("/delete/edit/<int:movie_id>",methods=['get','post'],endpoint="delete")
+def delete(movie_id):
+    heiha = movie.query.get_or_404(movie_id)
+    db.session.delete(heiha)
+    db.session.commit()
+    flash("删除完成")
+    return redirect(url_for("index"))
+
 
 
 @app.cli.command()
