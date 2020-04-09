@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>传统购物车</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container{
+            width: 40%;
+            margin: 100px auto;
+        }
+        .removed{
+            color: gold;
+        }
+        .removed label{
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <div calss="container">
+        <h2>我的购物车列表</h2>
+        <div class="input-group">
+            <input class="js-new-item form-control" type="text" placeholder="输入你想购买的物品">
+            <span class="input-group-btn">
+                <button class="js-add btn btn-default">添加到购物车</button>
+            </span>
+        </div>
+    </div>
+    <ul>
+        <li>
+            <div class="checkbox">
+                <label for="">
+                <input class="js-item" type="checkbox">苹果
+            </label>
+            </div>
+            
+        </li>
+        <li>
+            <div class="checkbox">
+                <label for="">
+                <input class="js-item" type="checkbox">香蕉
+            </label>
+            </div>
+            
+        </li>
+        <li>
+            <div class="removed">
+                <label for="">
+                <input class="js-item" type="checkbox">电脑
+                </label>
+            </div>
+            
+        </li>
+    </ul>
+
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.js-add').click(function(){
+            value = $(".js-new-item").val();
+            if (value === "") {
+                return;
+            }
+            var $ul,$li,$label,$div,value
+            $ul = $('ul')
+            $li = $('<li>').appendTo($ul)
+            $div = $('<div>').addClass('checkbox').appendTo($li)
+            $label = $('<label>').appendTo($div)
+            $('<input>').addClass('js-item').attr('type','checkbox').appendTo($label)
+            value = $(".js-new-item").val();
+            alert(value)
+            $label.append(value)
+        })
+    })
+</script>
+</html>
